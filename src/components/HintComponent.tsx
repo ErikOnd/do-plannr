@@ -13,7 +13,7 @@ const HintComponent = () => {
           <BiRightArrowAlt color="#88bdbc" size={20} />
         </Col>
         <Col className="d-flex ">
-          <span className="hint-text">Hit enter to add new todo</span>
+          <span className="hint-text">Hit enter twice for quick add</span>
         </Col>
       </Row>
       <Row>

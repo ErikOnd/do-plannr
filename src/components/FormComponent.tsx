@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+
 import TaskComponent from "./TaskComponent";
+import ModalComponent from "./ModalComponent";
 
 const FormComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalData, setModalData] = useState<string>("");
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleModalData = (data: string) => {
+    setModalData(data);
+  };
+
   return (
     <Container>
       <Row className="justify-content-center align-items-center vh-100">
@@ -23,10 +40,17 @@ const FormComponent = () => {
               <input
                 placeholder="Add new task..."
                 className="d-flex task-input"
-              ></input>
+              />
             </Col>
           </Row>
           <TaskComponent />
+          <button onClick={openModal}>Open Modal</button>{" "}
+          <ModalComponent
+            isOpen={isOpen}
+            closeModal={closeModal}
+            modalData={modalData}
+            handleModalData={handleModalData}
+          />
         </div>
       </Row>
     </Container>
