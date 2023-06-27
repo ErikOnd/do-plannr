@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@1,700&display=swap");
+´ :root {
+  --font: "DM Sans", sans-serif;
+}
+body {
+  color: #455963;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +43,130 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.background {
+  background-color: #88bdbc;
+  height: 90vh;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translateX(-50%) rotate(5deg);
+  width: 150%;
+}
+
+.todo-form {
+  z-index: 1;
+  max-width: 800px;
+  height: 60vh;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.hint-box {
+  z-index: 2;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 20px;
+}
+.hints-row {
+  border-bottom: 1px solid rgb(230 230 230);
+  height: 28px;
+  width: 100%;
+}
+
+.task-header-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 20px 20px 6px 20px;
+}
+
+.folder-row {
+  padding-inline: 20px;
+  color: #8a9ca5;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.task-filter.is-active {
+  background-color: #7996a5;
+  color: #fff;
+}
+
+.task-filter {
+  border: 0;
+  padding: 3px 8px;
+  background: 0;
+
+  line-height: 1;
+  cursor: pointer;
+  font-family: var(--font);
+  border-radius: 20px;
+}
+
+.task-input {
+  margin-top: 10px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 0;
+  border-bottom: 1px solid #e2e4ea;
+  font-weight: 500;
+  width: 100%;
+  color: #455963;
+}
+
+.task-input::placeholder {
+  color: #a9b4ba;
+}
+
+.task-input:focus {
+  outline: none;
+  border-bottom: 1px solid rgb(189 205 214);
+}
+
+.task-status {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: 2px solid #bbbdc7;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 10px;
+  position: relative;
+  margin-left: 32px;
+}
+
+.task-status:checked {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='405.272' height='405.272'%3e%3cpath d='M393.401 124.425L179.603 338.208c-15.832 15.835-41.514 15.835-57.361 0L11.878 227.836c-15.838-15.835-15.838-41.52 0-57.358 15.841-15.841 41.521-15.841 57.355-.006l81.698 81.699L336.037 67.064c15.841-15.841 41.523-15.829 57.358 0 15.835 15.838 15.835 41.514.006 57.361z' fill='%23fff'/%3e%3c/svg%3e");
+  background-size: 10px;
+  background-color: #4acea3;
+  border-color: #38bb90;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.todo-form {
+  overflow: hidden;
+}
+
+.task-col {
+  border-bottom: 1px solid #f1f2f5;
+}
+
+.task-row:hover {
+  background-color: rgb(237, 246, 249);
+}
+
+.delete-task {
+  margin-left: auto;
+  padding-right: 37px;
 }
