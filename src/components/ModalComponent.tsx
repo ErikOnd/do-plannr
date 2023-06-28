@@ -25,7 +25,8 @@ const ModalComponent = ({
   }, [isOpen]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Enter") {
+    console.log(textareaRef.current?.value);
+    if (event.key === "Enter" && textareaRef.current?.value === "") {
       event.preventDefault();
       closeModal();
     }
