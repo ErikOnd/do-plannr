@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@1,700&display=swap");
 ´ :root {
   --font: "DM Sans", sans-serif;
+  --main-text-color: #455963;
+  --border-color: #e2e4ea;
+  --bg-color: #88bdbc;
 }
 body {
   color: #455963;
@@ -184,7 +187,7 @@ body {
   transform: translate(-50%, -50%);
   background: white;
   max-width: 500px;
-  max-height: 400px;
+  max-height: 345px;
   border-radius: 20px;
 }
 
@@ -202,6 +205,10 @@ body {
   resize: none;
 }
 
+.text-area-row {
+  border-bottom: 1px solid #e2e4ea;
+}
+
 .modal-content {
   border-radius: 0;
   border-color: #e2e4ea;
@@ -213,4 +220,38 @@ body {
 
 .modal-textarea:focus {
   box-shadow: none;
+}
+
+.time-picker {
+  text-align: center;
+  border: none;
+  max-width: 70px;
+}
+
+.time-picker {
+  text-align: center;
+  border: none;
+  max-width: 70px;
+  color: var(--main-text-color);
+}
+
+.time-picker:focus {
+  outline: none;
+}
+
+.time-picker-col {
+  border: 1px solid #e2e4ea;
+  max-width: 100px;
+}
+
+.save-btn {
+  max-width: 100px;
+  background-color: #88bdbc;
+  border: none;
+  color: white;
+  padding: 10px;
+  max-width: 100px;
+  border-radius: 50px;
+  margin-bottom: 16px;
+  font-weight: bolder;
 }

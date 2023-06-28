@@ -1,6 +1,7 @@
-import React from "react";
-import { Modal, Row } from "react-bootstrap";
+import React, { useRef, useEffect } from "react";
+import { Button, Col, Modal, Row } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import { BiTimeFive } from "react-icons/bi";
 
 type ModalComponentProps = {
   isOpen: boolean;
@@ -15,7 +16,20 @@ const ModalComponent = ({
   modalData,
   handleModalData,
 }: ModalComponentProps) => {
-  console.log(isOpen);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (isOpen && textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, [isOpen]);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      closeModal();
+    }
+  };
 
   return (
     <Modal show={isOpen} onHide={closeModal} className="custom-modal">
@@ -32,14 +46,23 @@ const ModalComponent = ({
               rows={3}
               placeholder="add an extra note..."
               className="modal-textarea"
+              ref={textareaRef}
+              onKeyDown={handleKeyDown}
             />
           </Form.Group>
         </Row>
-        <Row>
-          <input placeholder="12:34"></input>
+        <Row className="justify-content-center my-3">
+          <Col className="d-flex  align-items-center time-picker-col p-0">
+            <input placeholder="00:00" className="time-picker"></input>
+            <BiTimeFive></BiTimeFive>
+          </Col>
         </Row>
       </Form>
-      <button onClick={closeModal}>Save Task</button>
+      <Row className="justify-content-center save-btn-row">
+        <button onClick={closeModal} className="save-btn">
+          Save Task
+        </button>
+      </Row>
     </Modal>
   );
 };
