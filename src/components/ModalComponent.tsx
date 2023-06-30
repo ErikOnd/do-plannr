@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import { Button, Col, Modal, Row } from "react-bootstrap";
+import { Col, Modal, Row } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { BiTimeFive } from "react-icons/bi";
 
 type ModalComponentProps = {
   isOpen: boolean;
   closeModal: () => void;
-  modalData: string; // Example type for the modal data
+  modalData: string;
   handleModalData: (data: string) => void;
 };
 
@@ -20,12 +20,14 @@ const ModalComponent = ({
 
   useEffect(() => {
     if (isOpen && textareaRef.current) {
-      textareaRef.current.focus();
+      setTimeout(() => {
+        textareaRef.current?.focus();
+        textareaRef.current?.setSelectionRange(0, 0);
+      }, 0);
     }
   }, [isOpen]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    console.log(textareaRef.current?.value);
     if (event.key === "Enter" && textareaRef.current?.value === "") {
       event.preventDefault();
       closeModal();
@@ -34,14 +36,10 @@ const ModalComponent = ({
 
   return (
     <Modal show={isOpen} onHide={closeModal} className="custom-modal">
-      <input
-        placeholder="task..."
-        className="d-flex task-input modal-input"
-        value="Testing stuff with Peter"
-      />
+      <input placeholder="task..." className="d-flex task-input modal-input" />
       <Form>
         <Row className="text-area-row">
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Group className="mb-3">
             <Form.Control
               as="textarea"
               rows={3}

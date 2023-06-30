@@ -20,6 +20,14 @@ const FormComponent = () => {
     setModalData(data);
   };
 
+  const handleTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {};
+
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      openModal();
+    }
+  };
+
   return (
     <Container>
       <Row className="justify-content-center align-items-center vh-100">
@@ -40,11 +48,14 @@ const FormComponent = () => {
               <input
                 placeholder="Add new task..."
                 className="d-flex task-input"
+                onChange={(e) => {
+                  handleTaskName(e);
+                }}
+                onKeyDown={handleEnter}
               />
             </Col>
           </Row>
           <TaskComponent />
-          <button onClick={openModal}>Open Modal</button>{" "}
           <ModalComponent
             isOpen={isOpen}
             closeModal={closeModal}

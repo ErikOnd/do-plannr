@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@1,700&display=swap");
-´ :root {
+
+:root {
   --font: "DM Sans", sans-serif;
   --main-text-color: #455963;
   --border-color: #e2e4ea;
   --bg-color: #88bdbc;
 }
+
 body {
-  color: #455963;
+  color: var(--main-text-color);
 }
 
 .App {
@@ -49,7 +51,7 @@ body {
 }
 
 .background {
-  background-color: #88bdbc;
+  background-color: var(--bg-color);
   height: 90vh;
   left: 50%;
   position: fixed;
@@ -84,7 +86,7 @@ body {
 }
 
 .hints-row {
-  border-bottom: 1px solid rgb(230 230 230);
+  border-bottom: 1px solid #e6e6ea;
   height: 28px;
   width: 100%;
 }
@@ -105,14 +107,13 @@ body {
 
 .task-filter.is-active {
   background-color: #7996a5;
-  color: #fff;
+  color: white;
 }
 
 .task-filter {
   border: 0;
   padding: 3px 8px;
   background: 0;
-
   line-height: 1;
   cursor: pointer;
   font-family: var(--font);
@@ -124,10 +125,10 @@ body {
   font-size: 16px;
   padding: 10px 20px;
   border: 0;
-  border-bottom: 1px solid #e2e4ea;
+  border-bottom: 1px solid var(--border-color);
   font-weight: 500;
   width: 100%;
-  color: #455963;
+  color: var(--main-text-color);
 }
 
 .task-input::placeholder {
@@ -136,7 +137,7 @@ body {
 
 .task-input:focus {
   outline: none;
-  border-bottom: 1px solid rgb(189 205 214);
+  border-bottom: 1px solid rgb(189, 205, 214);
 }
 
 .task-status {
@@ -206,12 +207,12 @@ body {
 }
 
 .text-area-row {
-  border-bottom: 1px solid #e2e4ea;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .modal-content {
   border-radius: 0;
-  border-color: #e2e4ea;
+  border-color: var(--border-color);
 }
 
 .modal-textarea::placeholder {
@@ -226,12 +227,6 @@ body {
   text-align: center;
   border: none;
   max-width: 70px;
-}
-
-.time-picker {
-  text-align: center;
-  border: none;
-  max-width: 70px;
   color: var(--main-text-color);
 }
 
@@ -240,13 +235,13 @@ body {
 }
 
 .time-picker-col {
-  border: 1px solid #e2e4ea;
+  border: 1px solid var(--border-color);
   max-width: 100px;
 }
 
 .save-btn {
   max-width: 100px;
-  background-color: #88bdbc;
+  background-color: var(--bg-color);
   border: none;
   color: white;
   padding: 10px;
