@@ -18,8 +18,6 @@ const ModalComponent = ({
 }: ModalComponentProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  console.log(modalData);
-
   useEffect(() => {
     if (isOpen && textareaRef.current) {
       setTimeout(() => {
@@ -29,8 +27,17 @@ const ModalComponent = ({
     }
   }, [isOpen]);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDownTextArea = (
+    event: React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
     if (event.key === "Enter" && textareaRef.current?.value === "") {
+      event.preventDefault();
+      closeModal();
+    }
+  };
+
+  const handleKeyDownDate = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
       event.preventDefault();
       closeModal();
     }
@@ -67,7 +74,7 @@ const ModalComponent = ({
               placeholder="add an extra note..."
               className="modal-textarea"
               ref={textareaRef}
-              onKeyDown={handleKeyDown}
+              onKeyDown={handleKeyDownTextArea}
               onChange={handleTaskNote}
             />
           </Form.Group>
@@ -77,6 +84,7 @@ const ModalComponent = ({
             <input
               placeholder="00:00"
               className="time-picker"
+              onKeyDown={handleKeyDownDate}
               onChange={(e) => {
                 handleTaskDate(e);
               }}

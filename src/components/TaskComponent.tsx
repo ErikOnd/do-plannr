@@ -18,7 +18,7 @@ const TaskComponent = () => {
           <input type="checkbox" className="task-status"></input>Call Peter for
           interview
           <span className="delete-task">
-            <TiDelete size={30} color="#dc344a" cursor={"pointer"} />
+            <TiDelete size={30} color="#e74c3c" cursor={"pointer"} />
           </span>
         </Col>
       </Row>

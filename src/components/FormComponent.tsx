@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
 import TaskComponent from "./TaskComponent";
 import ModalComponent from "./ModalComponent";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FormComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,24 @@ const FormComponent = () => {
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    const timeRegex = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+
+    const isValidTime = timeRegex.test(task.date);
+
+    if (isValidTime || task.date === "") {
+      setIsOpen(false);
+    } else {
+      toast.error("Enter a valide Time format or remove it", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
 
   const handleModalData = (data: string) => {
@@ -71,6 +89,18 @@ const FormComponent = () => {
           />
         </div>
       </Row>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </Container>
   );
 };
