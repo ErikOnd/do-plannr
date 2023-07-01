@@ -6,8 +6,8 @@ import { BiTimeFive } from "react-icons/bi";
 type ModalComponentProps = {
   isOpen: boolean;
   closeModal: () => void;
-  modalData: string;
-  handleModalData: (data: string) => void;
+  modalData: { name: string; date: string; note: string };
+  handleModalData: (data: { name: string; date: string; note: string }) => void;
 };
 
 const ModalComponent = ({
@@ -17,6 +17,8 @@ const ModalComponent = ({
   handleModalData,
 }: ModalComponentProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  console.log(modalData);
 
   useEffect(() => {
     if (isOpen && textareaRef.current) {
@@ -34,9 +36,28 @@ const ModalComponent = ({
     }
   };
 
+  const handleTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleModalData({ ...modalData, name: e.target.value });
+  };
+
+  const handleTaskNote = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    handleModalData({ ...modalData, note: e.target.value });
+  };
+
+  const handleTaskDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleModalData({ ...modalData, date: e.target.value });
+  };
+
   return (
     <Modal show={isOpen} onHide={closeModal} className="custom-modal">
-      <input placeholder="task..." className="d-flex task-input modal-input" />
+      <input
+        placeholder="task..."
+        className="d-flex task-input modal-input"
+        onChange={(e) => {
+          handleTaskName(e);
+        }}
+        value={modalData?.name}
+      />
       <Form>
         <Row className="text-area-row">
           <Form.Group className="mb-3">
@@ -47,13 +68,20 @@ const ModalComponent = ({
               className="modal-textarea"
               ref={textareaRef}
               onKeyDown={handleKeyDown}
+              onChange={handleTaskNote}
             />
           </Form.Group>
         </Row>
         <Row className="justify-content-center my-3">
           <Col className="d-flex  align-items-center time-picker-col p-0">
-            <input placeholder="00:00" className="time-picker"></input>
-            <BiTimeFive></BiTimeFive>
+            <input
+              placeholder="00:00"
+              className="time-picker"
+              onChange={(e) => {
+                handleTaskDate(e);
+              }}
+            ></input>
+            <BiTimeFive size={20}></BiTimeFive>
           </Col>
         </Row>
       </Form>

@@ -7,6 +7,11 @@ import ModalComponent from "./ModalComponent";
 const FormComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState<string>("");
+  const [task, setTask] = useState({
+    name: "",
+    note: "",
+    date: "",
+  });
 
   const openModal = () => {
     setIsOpen(true);
@@ -20,7 +25,9 @@ const FormComponent = () => {
     setModalData(data);
   };
 
-  const handleTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {};
+  const handleTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTask({ ...task, name: e.target.value });
+  };
 
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -59,8 +66,8 @@ const FormComponent = () => {
           <ModalComponent
             isOpen={isOpen}
             closeModal={closeModal}
-            modalData={modalData}
-            handleModalData={handleModalData}
+            modalData={task}
+            handleModalData={setTask}
           />
         </div>
       </Row>
