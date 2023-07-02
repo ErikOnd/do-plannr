@@ -1,13 +1,13 @@
 import React, { useRef, useEffect } from "react";
-import { Col, Modal, Row } from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import { Col, Modal, Row, Form } from "react-bootstrap";
 import { BiTimeFive } from "react-icons/bi";
+import Todo from "./interfaces/todo";
 
 type ModalComponentProps = {
   isOpen: boolean;
   closeModal: () => void;
-  modalData: { name: string; date: string; note: string };
-  handleModalData: (data: { name: string; date: string; note: string }) => void;
+  modalData: Todo;
+  handleModalData: (data: Todo) => void;
 };
 
 const ModalComponent = ({

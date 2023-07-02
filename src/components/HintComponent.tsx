@@ -21,7 +21,7 @@ const HintComponent = () => {
           <BiRightArrowAlt color="#88bdbc" size={20} />
         </Col>
         <Col className="d-flex ">
-          <span className="hint-text">Double click todo text to edit</span>
+          <span className="hint-text">Click on todo text to edit</span>
         </Col>
       </Row>
     </div>

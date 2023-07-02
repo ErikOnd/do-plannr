@@ -4,15 +4,19 @@ import TaskComponent from "./TaskComponent";
 import ModalComponent from "./ModalComponent";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo, removeTodo, editTodo } from "../store/todos";
 
 const FormComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [modalData, setModalData] = useState<string>("");
   const [task, setTask] = useState({
     name: "",
     note: "",
     date: "",
+    completed: false,
   });
+
+  const dispatch = useDispatch();
 
   const openModal = () => {
     setIsOpen(true);
@@ -23,10 +27,8 @@ const FormComponent = () => {
 
     const isValidTime = timeRegex.test(task.date);
 
-    if (isValidTime || task.date === "") {
-      setIsOpen(false);
-    } else {
-      toast.error("Enter a valide Time format or remove it", {
+    if (!task.name) {
+      toast.error("Your task needs a name", {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -36,11 +38,24 @@ const FormComponent = () => {
         progress: undefined,
         theme: "light",
       });
+    } else {
+      if (isValidTime || task.date === "") {
+        dispatch(addTodo(task));
+        setTask({ name: "", note: "", date: "", completed: false });
+        setIsOpen(false);
+      } else {
+        toast.error("Enter a valide Time format or remove it", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
     }
-  };
-
-  const handleModalData = (data: string) => {
-    setModalData(data);
   };
 
   const handleTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,6 +92,7 @@ const FormComponent = () => {
                   handleTaskName(e);
                 }}
                 onKeyDown={handleEnter}
+                value={task.name}
               />
             </Col>
           </Row>
