@@ -250,3 +250,19 @@ body {
   margin-bottom: 16px;
   font-weight: bolder;
 }
+
+.task-container {
+  height: calc(60vh - 132px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+/* Chrome, Edge, and Safari */
+.task-container::-webkit-scrollbar {
+  width: 0px;
+}
+
+.task-container::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+}

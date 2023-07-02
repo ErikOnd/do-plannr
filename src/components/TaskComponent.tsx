@@ -10,7 +10,7 @@ const TaskComponent = () => {
 
   const dispatch = useDispatch();
   return (
-    <>
+    <div className="task-container">
       {todos.map((todo, index) => (
         <Row className="task-row pt-2" key={index}>
           <Col className="d-flex align-items-center p-0 task-col pb-2">
@@ -30,7 +30,7 @@ const TaskComponent = () => {
           </Col>
         </Row>
       ))}
-    </>
+    </div>
   );
 };
 
