@@ -1,20 +1,14 @@
 import React, { useRef, useEffect } from "react";
 import { Col, Modal, Row, Form } from "react-bootstrap";
 import { BiTimeFive } from "react-icons/bi";
-import Todo from "./interfaces/todo";
-
-type ModalComponentProps = {
-  isOpen: boolean;
-  closeModal: () => void;
-  modalData: Todo;
-  handleModalData: (data: Todo) => void;
-};
+import ModalComponentProps from "./interfaces/ModalComponentProps";
 
 const ModalComponent = ({
   isOpen,
   closeModal,
   modalData,
   handleModalData,
+  editTask,
 }: ModalComponentProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -76,6 +70,7 @@ const ModalComponent = ({
               ref={textareaRef}
               onKeyDown={handleKeyDownTextArea}
               onChange={handleTaskNote}
+              value={modalData?.note}
             />
           </Form.Group>
         </Row>
@@ -88,6 +83,7 @@ const ModalComponent = ({
               onChange={(e) => {
                 handleTaskDate(e);
               }}
+              value={modalData?.date}
             ></input>
             <BiTimeFive size={20}></BiTimeFive>
           </Col>

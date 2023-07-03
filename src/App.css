@@ -93,7 +93,7 @@ body {
 
 .task-header-title {
   margin: 0;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 900;
   padding: 20px 20px 6px 20px;
 }
@@ -178,7 +178,7 @@ body {
 
 .delete-task {
   margin-left: auto;
-  padding-right: 37px;
+  padding-right: 12px;
 }
 
 .custom-modal {
@@ -265,4 +265,32 @@ body {
 
 .task-container::-webkit-scrollbar-thumb {
   border-radius: 0px;
+}
+
+.todo-input {
+  font-size: 20px;
+}
+
+.todo-name {
+  font-size: 20px;
+  cursor: pointer;
+}
+.todo-date {
+  font-size: 14px;
+  margin-left: 20px;
+  color: #8a9ca5;
+}
+
+.time-icon {
+  margin-right: 5px;
+}
+
+.task-note {
+  font-size: 14px;
+  margin-left: 50px;
+  color: #8a9ca5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
 }

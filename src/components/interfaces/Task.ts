@@ -1,4 +1,4 @@
-export default interface Todo {
+export default interface Task {
   name: string;
   note: string;
   date: string;

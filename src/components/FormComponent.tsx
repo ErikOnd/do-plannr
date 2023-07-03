@@ -4,12 +4,14 @@ import TaskComponent from "./TaskComponent";
 import ModalComponent from "./ModalComponent";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch, useSelector } from "react-redux";
-import { addTodo, removeTodo, editTodo } from "../store/todos";
+import { useDispatch } from "react-redux";
+import { addTodo, editTodo } from "../store/todos";
+import Task from "./interfaces/Task";
 
 const FormComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [task, setTask] = useState({
+  const [taskIndex, setTaskIndex] = useState<number>(-1);
+  const [task, setTask] = useState<Task>({
     name: "",
     note: "",
     date: "",
@@ -39,7 +41,12 @@ const FormComponent = () => {
         theme: "light",
       });
     } else {
-      if (isValidTime || task.date === "") {
+      if ((isValidTime || task.date === "") && taskIndex !== -1) {
+        dispatch(editTodo({ index: taskIndex, todo: task }));
+        setTask({ name: "", note: "", date: "", completed: false });
+        setTaskIndex(-1);
+        setIsOpen(false);
+      } else if (isValidTime || task.date === "") {
         dispatch(addTodo(task));
         setTask({ name: "", note: "", date: "", completed: false });
         setIsOpen(false);
@@ -87,7 +94,7 @@ const FormComponent = () => {
             <Col>
               <input
                 placeholder="Add new task..."
-                className="d-flex task-input"
+                className="d-flex task-input todo-input"
                 onChange={(e) => {
                   handleTaskName(e);
                 }}
@@ -96,7 +103,11 @@ const FormComponent = () => {
               />
             </Col>
           </Row>
-          <TaskComponent />
+          <TaskComponent
+            handleModalData={setTask}
+            handleIsOpen={setIsOpen}
+            handleTaskIndex={setTaskIndex}
+          />
           <ModalComponent
             isOpen={isOpen}
             closeModal={closeModal}
