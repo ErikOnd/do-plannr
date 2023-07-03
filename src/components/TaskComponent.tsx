@@ -4,7 +4,7 @@ import { TiDelete } from "react-icons/ti";
 import { BiTimeFive } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { removeTodo } from "../store/todos";
+import { removeTodo } from "../store/reducers/todos";
 import Task from "./interfaces/Task";
 
 interface TaskProps {
@@ -29,8 +29,8 @@ const TaskComponent = ({
             {" "}
             <Col
               className={
-                todo.note
-                  ? "d-flex align-items-center p-0"
+                todo?.note || todo?.date
+                  ? "d-flex align-items-center p-0 "
                   : "d-flex align-items-center p-0 pb-2"
               }
             >
@@ -45,14 +45,6 @@ const TaskComponent = ({
               >
                 {todo.name}
               </span>
-              {todo?.date && (
-                <span className="d-flex align-items-center todo-date">
-                  <BiTimeFive className="time-icon"></BiTimeFive>
-
-                  {todo.date}
-                </span>
-              )}
-
               <span className="delete-task">
                 <TiDelete
                   size={30}
@@ -66,9 +58,19 @@ const TaskComponent = ({
             </Col>
           </Row>
           {todo.note && (
-            <Row>
+            <Row className={todo?.date ? "" : "pb-2"}>
               <Col className="d-flex justify-content-start">
                 <span className="task-note">{todo.note}</span>
+              </Col>
+            </Row>
+          )}
+          {todo?.date && (
+            <Row className="pb-2">
+              <Col className="d-flex justify-content-start">
+                <span className="task-note">
+                  <BiTimeFive className="time-icon"></BiTimeFive>
+                  {todo.date}
+                </span>
               </Col>
             </Row>
           )}

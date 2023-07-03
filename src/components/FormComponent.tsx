@@ -5,7 +5,7 @@ import ModalComponent from "./ModalComponent";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
-import { addTodo, editTodo } from "../store/todos";
+import { addTodo, editTodo } from "../store/reducers/todos";
 import Task from "./interfaces/Task";
 
 const FormComponent = () => {

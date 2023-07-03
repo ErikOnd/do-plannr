@@ -276,13 +276,14 @@ body {
   cursor: pointer;
 }
 .todo-date {
+  margin-left: 50px;
   font-size: 14px;
-  margin-left: 20px;
+  margin-left: 10px;
   color: #8a9ca5;
 }
 
 .time-icon {
-  margin-right: 5px;
+  margin-right: 3px;
 }
 
 .task-note {
