@@ -1,0 +1,70 @@
+.task-container {
+  height: calc(60vh - 132px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+/* Chrome, Edge, and Safari */
+.task-container::-webkit-scrollbar {
+  width: 0px;
+}
+
+.task-container::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+}
+
+.task-col {
+  border-bottom: 1px solid #f1f2f5;
+}
+
+.task-row:hover {
+  background-color: rgb(237, 246, 249);
+}
+
+.task-status {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: 2px solid #bbbdc7;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 10px;
+  position: relative;
+  margin-left: 32px;
+}
+
+.task-status:checked {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='405.272' height='405.272'%3e%3cpath d='M393.401 124.425L179.603 338.208c-15.832 15.835-41.514 15.835-57.361 0L11.878 227.836c-15.838-15.835-15.838-41.52 0-57.358 15.841-15.841 41.521-15.841 57.355-.006l81.698 81.699L336.037 67.064c15.841-15.841 41.523-15.829 57.358 0 15.835 15.838 15.835 41.514.006 57.361z' fill='%23fff'/%3e%3c/svg%3e");
+  background-size: 10px;
+  background-color: #95d0ce;
+  border-color: #7caeac;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.todo-name {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.delete-task {
+  margin-left: auto;
+  padding-right: 12px;
+}
+
+.task-note {
+  font-size: 14px;
+  margin-left: 50px;
+  color: #8a9ca5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+}
+.time-icon {
+  margin-right: 3px;
+}

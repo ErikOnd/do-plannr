@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { Col, Modal, Row, Form } from "react-bootstrap";
 import { BiTimeFive } from "react-icons/bi";
-import ModalComponentProps from "./interfaces/ModalComponentProps";
+import ModalComponentProps from "../../interfaces/ModalComponentProps";
+import styles from "./ModalComponent..module.css";
 
 const ModalComponent = ({
   isOpen,
@@ -46,27 +47,31 @@ const ModalComponent = ({
   };
 
   const handleTaskDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleModalData({ ...modalData, date: e.target.value });
+    handleModalData({ ...modalData, time: e.target.value });
   };
 
   return (
-    <Modal show={isOpen} onHide={closeModal} className="custom-modal">
+    <Modal
+      show={isOpen}
+      onHide={closeModal}
+      className={`${styles["custom-modal"]}`}
+    >
       <input
         placeholder="task..."
-        className="d-flex task-input modal-input"
+        className={` d-flex task-input ${styles["modal-input"]}`}
         onChange={(e) => {
           handleTaskName(e);
         }}
         value={modalData?.name}
       />
       <Form>
-        <Row className="text-area-row">
-          <Form.Group className="mb-3">
+        <Row className={`${styles["text-area-row"]}`}>
+          <Form.Group className="">
             <Form.Control
               as="textarea"
               rows={3}
               placeholder="add an extra note..."
-              className="modal-textarea"
+              className={`${styles["modal-textarea"]}`}
               ref={textareaRef}
               onKeyDown={handleKeyDownTextArea}
               onChange={handleTaskNote}
@@ -75,22 +80,24 @@ const ModalComponent = ({
           </Form.Group>
         </Row>
         <Row className="justify-content-center my-3">
-          <Col className="d-flex  align-items-center time-picker-col p-0">
+          <Col
+            className={`d-flex align-items-center p-0 ${styles["time-picker-col"]}`}
+          >
             <input
               placeholder="00:00"
-              className="time-picker"
+              className={`${styles["time-picker"]}`}
               onKeyDown={handleKeyDownDate}
               onChange={(e) => {
                 handleTaskDate(e);
               }}
-              value={modalData?.date}
+              value={modalData?.time}
             ></input>
             <BiTimeFive size={20}></BiTimeFive>
           </Col>
         </Row>
       </Form>
-      <Row className="justify-content-center save-btn-row">
-        <button onClick={closeModal} className="save-btn">
+      <Row className={`justify-content-center ${styles["save-btn-row"]}`}>
+        <button onClick={closeModal} className={`${styles["save-btn"]}`}>
           Save Task
         </button>
       </Row>

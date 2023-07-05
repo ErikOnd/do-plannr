@@ -1,0 +1,60 @@
+.custom-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  max-width: 500px;
+  max-height: 329px;
+  border-radius: 20px;
+}
+
+.text-area-row {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-input {
+  font-size: xx-large;
+}
+
+.modal-textarea {
+  padding: 20px;
+  border: none;
+  resize: none;
+}
+
+.modal-textarea::placeholder {
+  color: #a9b4ba;
+}
+
+.modal-textarea:focus {
+  box-shadow: none;
+}
+
+.time-picker {
+  text-align: center;
+  border: none;
+  max-width: 70px;
+  color: var(--main-text-color);
+}
+
+.time-picker:focus {
+  outline: none;
+}
+
+.time-picker-col {
+  border: 1px solid var(--border-color);
+  max-width: 100px;
+}
+
+.save-btn {
+  max-width: 100px;
+  background-color: var(--bg-color);
+  border: none;
+  color: white;
+  padding: 10px;
+  max-width: 100px;
+  border-radius: 50px;
+  margin-bottom: 16px;
+  font-weight: bolder;
+}

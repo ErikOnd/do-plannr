@@ -1,6 +1,6 @@
 export default interface Task {
   name: string;
   note: string;
-  date: string;
+  time: string;
   completed: boolean;
 }

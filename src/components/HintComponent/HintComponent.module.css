@@ -1,0 +1,21 @@
+.hint-box {
+  z-index: 2;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.hint-box:hover {
+  background-color: white;
+}
+
+.hints-row {
+  border-bottom: 1px solid #e6e6ea;
+  height: 28px;
+  width: 100%;
+}

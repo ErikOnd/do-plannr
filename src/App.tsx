@@ -1,7 +1,6 @@
 import "./App.css";
-import FormComponent from "./components/FormComponent";
-import { Container } from "react-bootstrap";
-import HintComponent from "./components/HintComponent";
+import FormComponent from "./components/FormComponent/FormComponent";
+import HintComponent from "./components/HintComponent/HintComponent";
 
 function App() {
   return (
